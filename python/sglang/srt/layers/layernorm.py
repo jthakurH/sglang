@@ -273,7 +273,7 @@ class RMSNorm(MultiPlatformOp):
                 residual is not None
                 or get_global_server_args().rl_on_policy_target == "fsdp"
             ):
-                return self.forward_native(x, residual)
+                return self.forward_native(x, residual, **kwargs)
             return rms_norm_batch_invariant(
                 x,
                 self.weight.data,
